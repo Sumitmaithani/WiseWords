@@ -28,6 +28,7 @@ export default function Banner() {
           src={Logo.src}
           width={500}
           height={400}
+          alt=''
         />
       </div>
     </div>

@@ -1,11 +1,11 @@
-import Image from 'next/image'
-import { AiOutlineSearch } from 'react-icons/ai'
-import { MdMarkEmailUnread } from 'react-icons/md'
-import ReplitLogo from '../static/replit.png'
-import TutorialImg from '../static/tutorial.jpg'
-import CPLogo from '../static/cp.png'
-import Qazi from '../static/qazi.jpg'
-import JSLogo from '../static/jsLogo.png'
+import Image from "next/image";
+import { AiOutlineSearch } from "react-icons/ai";
+import { MdMarkEmailUnread } from "react-icons/md";
+import ReplitLogo from "../static/replit.png";
+import TutorialImg from "../static/tutorial.jpg";
+import CPLogo from "../static/cp.png";
+import Qazi from "../static/qazi.jpg";
+import JSLogo from "../static/jsLogo.png";
 
 const styles = {
   wrapper: `h-screen min-w-[10rem] max-w-[30rem] flex-[1.2] p-[2rem]`,
@@ -28,8 +28,8 @@ const styles = {
   recommendationThumbnailContainer: `flex flex-1 items-center justify-center h-[4rem] w-[4rem]`,
   recommendationThumbnail: `object-cover`,
   articleContentWrapper: `flex items-center justify-between cursor-pointer my-[1rem]`,
-  articleContent: `flex-[4]`,
-}
+  articleContent: `flex-[4]`
+};
 
 const Recommendations = ({ author }) => {
   return (
@@ -39,84 +39,90 @@ const Recommendations = ({ author }) => {
         <AiOutlineSearch />
         <input
           className={styles.searchInput}
-          placeholder='Search'
-          type='text'
+          placeholder="Search"
+          type="text"
         />
       </div>
 
       <div className={styles.authorContainer}>
         <div className={styles.authorProfileImageContainer}>
-          <Image
-            src={Qazi}
-            width={100}
-            height={100}
-          />
+          <Image src={Qazi} width={100} height={100} alt="" />
         </div>
         <div className={styles.authorName}>Rafeh Qazi</div>
         <div className={styles.authorFollowing}>1M followers</div>
         <div className={styles.authorActions}>
           <button className={styles.actionButton}>Follow</button>
-          <button className={styles.actionButton}><MdMarkEmailUnread /></button>
+          <button className={styles.actionButton}>
+            <MdMarkEmailUnread />
+          </button>
         </div>
       </div>
 
       <div className={styles.recommendationContainer}>
         <div className={styles.title}>More from Medium</div>
         <div className={styles.articlesContainer}>
-
-          {recommendedPosts.map(post => (
-          <div className={styles.articleContentWrapper}>
-            <div className={styles.articleContent}>
-
-              <div className={styles.recommendationAuthorContainer}>
-                <div className={styles.recommendationAuthorProfileImageContainer}>
-                  <Image src={post.author.image} height={100} width={100} />
+          {recommendedPosts.map((post) => (
+            <div className={styles.articleContentWrapper}>
+              <div className={styles.articleContent}>
+                <div className={styles.recommendationAuthorContainer}>
+                  <div
+                    className={styles.recommendationAuthorProfileImageContainer}
+                  >
+                    <Image
+                      src={post.author.image}
+                      height={100}
+                      width={100}
+                      alt=""
+                    />
+                  </div>
+                  <div className={styles.recommendationAuthorName}>
+                    {post.author.name}
+                  </div>
                 </div>
-                <div className={styles.recommendationAuthorName}>{post.author.name}</div>
+                <div className={styles.recommendationTitle}>{post.title}</div>
               </div>
-              <div className={styles.recommendationTitle}>{post.title}</div>
-
+              <div className={styles.recommendationThumbnailContainer}>
+                <Image
+                  className={styles.recommendationThumbnail}
+                  src={post.image}
+                  height={100}
+                  width={100}
+                  alt=""
+                />
+              </div>
             </div>
-            <div className={styles.recommendationThumbnailContainer}>
-              <Image
-                className={styles.recommendationThumbnail}
-                src={post.image} height={100} width={100} />
-            </div>
-          </div>
-      ))}
+          ))}
         </div>
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Recommendations
+export default Recommendations;
 
 const recommendedPosts = [
   {
-    title: 'What can you do with Replit?',
+    title: "What can you do with Replit?",
     image: ReplitLogo,
     author: {
-      name: 'Clever Programmer',
+      name: "Clever Programmer",
       image: CPLogo
     }
   },
- {
-    title: 'The Ultimate JavaScript Course for Beginners by Clever Programmer',
+  {
+    title: "The Ultimate JavaScript Course for Beginners by Clever Programmer",
     image: TutorialImg,
     author: {
-      name: 'Rafeh Qazi',
+      name: "Rafeh Qazi",
       image: Qazi
     }
   },
-   {
-    title: 'How to Become a Developer in 2022?',
+  {
+    title: "How to Become a Developer in 2022?",
     image: JSLogo,
     author: {
-      name: 'Clever Programmer',
+      name: "Clever Programmer",
       image: CPLogo
     }
-  },
-  
-]
+  }
+];

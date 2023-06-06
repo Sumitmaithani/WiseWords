@@ -27,6 +27,7 @@ export default function Header() {
             src={Logo}
             height={40}
             width={200}
+            alt=''
           />
         </div>
         {/* {currentUser ?

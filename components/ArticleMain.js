@@ -41,6 +41,7 @@ const ArticleMain = ({ post, author }) => {
                 src={Qazi}
                 width={100}
                 height={100}
+                alt=''
               />
             </div>
             <div className={styles.column}>
@@ -72,6 +73,7 @@ const ArticleMain = ({ post, author }) => {
               src={Banner}
               height={100}
               width={100}
+              alt=''
             />
           </div>
           <h1 className={styles.title}>{post?.data?.title}
