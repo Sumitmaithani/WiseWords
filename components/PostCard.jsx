@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Logo from "../static/logo.png";
 import { FiBookmark } from "react-icons/fi";
 import Link from "next/link";
-//import { db } from '../firebase'
-//import { doc, getDoc } from 'firebase/firestore'
-//import { useState, useEffect } from "react";
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
 
 const styles = {
   wrapper: `flex max-w-[46rem] h-[10rem] items-center gap-[1rem] cursor-pointer`,
@@ -22,37 +24,53 @@ const styles = {
   thumbnailContainer: "flex-1"
 };
 
+// type Post = {
+//   data: {
+//     author: string;
+//     bannerImage: string;
+//     body: string;
+//     brief: string;
+//     category: string;
+//     postLength: string;
+//     postedOn: Date;
+//     title: string;
+//   };
+//   id: string;
+// };
+
 const PostCard = ({ post }) => {
-  //const [authorData, setAuthorData] = useState(null);
+  const [authorData, setAuthorData] = useState(null);
 
-  //   useEffect(() => {
-  //     const getAuthorData = async () => {
-  //       console
-  //       console.log((await getDoc(doc(db, 'users', post.data.author))).data(), '👨‍🚒')
+  useEffect(() => {
+    const getAuthorData = async () => {
+      console;
+      console.log(
+        (await getDoc(doc(db, "users", post.data.author))).data(),
+        "👨‍🚒"
+      );
 
-  //       setAuthorData(
-  //         (await getDoc(doc(db, 'users', post.data.author))).data()
-  //       )
-  //     }
+      //setAuthorData((await getDoc(doc(db, "users", post.data.author))).data());
+    };
 
-  //     getAuthorData()
-  //   }, [])
+    getAuthorData();
+  }, []);
 
   return (
-    <Link href={`/post/123`}>
-      {/* <div className={styles.wrapper}>
+    <Link href={`/post/${post.id}`}>
+      <div className={styles.wrapper}>
         <div className={styles.postDetails}>
           <div className={styles.authorContainer}>
             <div className={styles.authorImageContainer}>
               <Image
-                // src={`https://res.cloudinary.com/demo/image/fetch/${authorData?.imageUrl}`}
+                src={`https://res.cloudinary.com/demo/image/fetch/${authorData?.imageUrl}`}
                 className={styles.authorImage}
                 width={40}
                 height={40}
+                alt=""
               />
             </div>
 
-            <div className={styles.authorName}>{authorData?.name}yyy</div>
+            <div className={styles.authorName}>{authorData?.name}</div>
           </div>
 
           <h1 className={styles.title}>{post.data.title}</h1>
@@ -77,10 +95,10 @@ const PostCard = ({ post }) => {
             height={100}
             width={100}
             src={`https://res.cloudinary.com/demo/image/fetch/${post.data.bannerImage}`}
+            alt=""
           />
         </div>
-      </div> */}
-      dhddhhdhd
+      </div>
     </Link>
   );
 };

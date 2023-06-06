@@ -23,6 +23,16 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/page.tsx",
+    "components/PostCard.jsx",
+    "components/Recommendations.jsx",
+    "components/ArticleMain.jsx",
+    "app/post/[id]/page.jsx"
+  ],
   "exclude": ["node_modules"]
 }

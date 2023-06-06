@@ -1,7 +1,9 @@
+'use client';
+
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import PostCard from "../components/PostCard";
-//import { MediumContext } from '../context/MediumContext'
+import { WWContext } from "../context/context";
 import { useContext } from "react";
 
 const styles = {
@@ -14,9 +16,23 @@ const styles = {
 };
 
 export default function Home() {
-  //const { posts } = {useContext(MediumContext)}
+  const { posts } = useContext(WWContext);
 
-  // console.log(posts, "🔥");
+  console.log(posts, "🔥");
+
+  type Post = {
+    data: {
+      author: string;
+      bannerImage: string;
+      body: string;
+      brief: string;
+      category: string;
+      postLength: string;
+      postedOn: Date;
+      title: string;
+    };
+    id: string;
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -25,10 +41,9 @@ export default function Home() {
       <div className={styles.main}>
         <div className={styles.container}>
           <div className={styles.postsList}>
-            {/* {posts.map(post => ( */}
-            {/* <PostCard post={post} key={post.id} /> */}
-            <PostCard post={""} key={""} />
-            {/* ))} */}
+            {posts.map((post:Post) => (
+              <PostCard post={post} key={post.id} />
+            ))}
           </div>
         </div>
       </div>

@@ -1,13 +1,13 @@
-import Image from "next/image"
-import Qazi from '../static/qazi.jpg'
-import { AiFillPlayCircle } from 'react-icons/ai'
-import { IoLogoTwitter } from 'react-icons/io'
-import { FaFacebook } from 'react-icons/fa'
-import { GrLinkedin } from 'react-icons/gr'
-import { HiOutlineLink } from 'react-icons/hi'
-import { BiBookmarks } from 'react-icons/bi'
-import { FiMoreHorizontal } from 'react-icons/fi'
-import Banner from './../static/banner.png'
+import Image from "next/image";
+import Qazi from "../static/qazi.jpg";
+import { AiFillPlayCircle } from "react-icons/ai";
+import { IoLogoTwitter } from "react-icons/io";
+import { FaFacebook } from "react-icons/fa";
+import { GrLinkedin } from "react-icons/gr";
+import { HiOutlineLink } from "react-icons/hi";
+import { BiBookmarks } from "react-icons/bi";
+import { FiMoreHorizontal } from "react-icons/fi";
+import Banner from "./../static/banner.png";
 
 const styles = {
   wrapper: `flex items-center justify-center flex-[3] border-l border-r`,
@@ -25,11 +25,11 @@ const styles = {
   image: `object-cover`,
   title: `font-bold text-3xl`,
   subtitle: `font-mediumSerifItalic text-[1.4rem] text-[#292929]`,
-  articleText: `font-mediumSerif text-[1.4rem] text-[#292929]`,
-}
+  articleText: `font-mediumSerif text-[1.4rem] text-[#292929]`
+};
 
 const ArticleMain = ({ post, author }) => {
-  console.log(post, author, '🍪')
+  console.log(post, author, "🍪");
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -41,16 +41,21 @@ const ArticleMain = ({ post, author }) => {
                 src={Qazi}
                 width={100}
                 height={100}
-                alt=''
+                alt=""
               />
             </div>
             <div className={styles.column}>
               <div>{author?.data?.name}</div>
               <div className={styles.postDetails}>
-                <span> {new Date(post.data?.postedOn).toLocaleString('en-US', {
-                  day: 'numeric',
-                  month: 'short',
-                })} • {post.data?.postLength} min read • </span><span className={styles.listenButton}>
+                <span>
+                  {" "}
+                  {new Date(post.data?.postedOn).toLocaleString("en-US", {
+                    day: "numeric",
+                    month: "short"
+                  })}{" "}
+                  • {post.data?.postLength} min read •{" "}
+                </span>
+                <span className={styles.listenButton}>
                   <AiFillPlayCircle /> Listen
                 </span>
               </div>
@@ -73,18 +78,17 @@ const ArticleMain = ({ post, author }) => {
               src={Banner}
               height={100}
               width={100}
-              alt=''
+              alt=""
             />
           </div>
-          <h1 className={styles.title}>{post?.data?.title}
-          </h1>
+          <h1 className={styles.title}>{post?.data?.title}</h1>
           <h4 className={styles.subtitle}>
             <div>
-              {author?.data?.name},{' '}
-              {new Date(post.data?.postedOn).toLocaleString('en-US', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric'
+              {author?.data?.name},{" "}
+              {new Date(post.data?.postedOn).toLocaleString("en-US", {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
               })}
             </div>
             <div>{post?.data?.brief}</div>
@@ -93,7 +97,7 @@ const ArticleMain = ({ post, author }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ArticleMain
+export default ArticleMain;
